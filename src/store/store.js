@@ -8,6 +8,9 @@ Vue.use(Vuex);
 //Can now use products from central store
 //without passing as props
 export const store = new Vuex.Store({
+  //Strict Mode
+  //will only handle changes inside the store
+  strict: true,
   state: {
     products: [
       {
@@ -31,14 +34,22 @@ export const store = new Vuex.Store({
   //getters
   getters: {
     saleProducts: state => {
-      var saleProducts = state.products.map( product => {
+      var saleProducts = state.products.map(product => {
         return {
-          name: '**' + product.name + '**' ,
+          name: "**" + product.name + "**",
           price: product.price / 2
-        }
+        };
       });
 
       return saleProducts;
+    }
+  },
+  //Mutations => Can be tracked
+  mutations: {
+    reducePrice: state => {
+      state.products.forEach(product => {
+        product.price -= 1;
+      });
     }
   }
 });
