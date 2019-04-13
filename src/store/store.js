@@ -46,10 +46,19 @@ export const store = new Vuex.Store({
   },
   //Mutations => Can be tracked
   mutations: {
-    reducePrice: state => {
+    reducePrice: (state, payload) => {
       state.products.forEach(product => {
-        product.price -= 1;
+        product.price -= payload;
       });
+    }
+  },
+  //Actions
+  actions: {
+    //payload = params
+    reducePrice: (context, payload) => {
+      setTimeout(function() {
+        context.commit("reducePrice", payload);
+      }, 2000);
     }
   }
 });
