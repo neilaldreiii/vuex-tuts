@@ -12,7 +12,12 @@
 
 <script>
 export default {
-    props: ['products']
+    computed: {
+        //Use VueX
+        products() {
+            return this.$store.state.products;
+        }
+    }
 }
 </script>
 

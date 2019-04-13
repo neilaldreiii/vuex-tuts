@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <product-list-one :products="products"></product-list-one>
-    <product-list-two :products="products"></product-list-two>
+    <product-list-one></product-list-one>
+    <product-list-two></product-list-two>
   </div>
 </template>
 
