@@ -12,29 +12,34 @@
 </template>
 
 <script>
+//Mapping Actions & Getters
+import {mapActions} from 'vuex';
+import {mapGetters} from 'vuex';
+
 export default {
     computed: {
         //Use VueX
         products() {
+            
             return this.$store.state.products;
+
         },
+
+        //To make the spreader work install babel preset
+        //npm install babel-preset-stage-2 --save-dev
         
-        saleProducts() {
-            return this.$store.getters.saleProducts;
-        }
+        ...mapGetters([
+            "saleProducts",
+            // "anotherone",
+            // "anotheranotherone"
+        ])
     },
     methods: {
-        reducePrice(amount) {
-            // Commiting a mutation
-            // this.$store.commit('reducePrice');
-
-            //Dispatching actions
-            //Instead of directly commiting a mutation
-            // this.$store.dispatch("reducePrice");
-
-            //Passing parameters into action
-            this.$store.dispatch("reducePrice", amount);
-        }
+        ...mapActions([
+            'reducePrice',
+            // "Anotherone",
+            // "anotherone"
+        ])
     }
 }
 </script>
